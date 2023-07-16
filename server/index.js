@@ -16,11 +16,12 @@ app.listen(port, () => {
 // CREATE
 app.post('/todos', async (req, res) => {
   try {
-    const { description } = req.body;
-    console.log(description);
+    // console.log(req.body);
+    const { todoInput } = req.body;
+    console.log(todoInput);
     const newTodo = await pool.query(
       `INSERT INTO todo (description) VALUES($1) RETURNING *`,
-      [description]
+      [todoInput]
     );
     res.json(newTodo.rows[0]);
   } catch (err) {
