@@ -6,10 +6,6 @@ const pool = require('./db');
 
 const port = 5000;
 
-app.listen(port, () => {
-  console.log(`server started at port: ${port}`);
-});
-
 app.use(cors());
 app.use(express.json());
 
@@ -18,7 +14,16 @@ app.post('/todos', async (req, res) => {
   try {
     const { description } = req.body;
     console.log(description);
+    const newTodo = await pool.query(
+      'INSERT INTO todo (description) VALUES($1)',
+      [description]
+    );
+    res.json(newTodo);
   } catch (err) {
     console.error(err.message);
   }
+});
+
+app.listen(port, () => {
+  console.log(`server started at port: ${port}`);
 });
