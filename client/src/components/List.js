@@ -30,6 +30,7 @@ const List = () => {
   };
 
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [editTodo, setEditTodo] = useState({});
 
   return (
     <section className="flex flex-col gap-3">
@@ -41,13 +42,26 @@ const List = () => {
           >
             <div className="text-ellipsis">{todo.description}</div>
             <div className="flex gap-3 text-sm">
-              <button onClick={() => setOpenEditModal(true)}>Edit</button>
+              <button
+                onClick={() => {
+                  setEditTodo(todo);
+                  setOpenEditModal(true);
+                }}
+              >
+                Edit
+              </button>
               <button onClick={() => deleteTodo(todo.todo_id)}>Del</button>
             </div>
           </li>
         );
       })}
-      {openEditModal && <EditModal setOpenEditModal={setOpenEditModal} />}
+      {openEditModal && (
+        <EditModal
+          setOpenEditModal={setOpenEditModal}
+          editTodo={editTodo}
+          setEditTodo={setEditTodo}
+        />
+      )}
     </section>
   );
 };
