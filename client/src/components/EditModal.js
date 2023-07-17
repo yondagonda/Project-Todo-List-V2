@@ -20,7 +20,7 @@ const EditModal = ({ setOpenEditModal, editTodo, setEditTodo }) => {
   };
 
   return (
-    <aside className="border border-black p-3 ">
+    <aside className="border border-2 border-red-500 p-5 fixed z-[10] bg-white top-[45%]">
       <div className="flex justify-between">
         <h1>Edit Todo</h1>
         <button onClick={() => setOpenEditModal(false)}>Close</button>
