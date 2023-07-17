@@ -14,7 +14,7 @@ const Input = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
-      console.log(response);
+      window.location.reload(false);
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +31,7 @@ const Input = () => {
         className="border border-black"
       />
 
-      <button onClick={onAddTodo} className="border border-black px-10 py-1.5">
+      <button onClick={onAddTodo} className="border border-black px-10 py-1">
         Add
       </button>
     </>
