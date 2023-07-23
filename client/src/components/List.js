@@ -8,7 +8,9 @@ const List = () => {
     try {
       const response = await fetch('http://localhost:5000/todos');
       const data = await response.json();
-      setAllTodos(data);
+      const sortedData = data.sort((a, b) => a.todo_id - b.todo_id);
+      console.log(sortedData);
+      setAllTodos(sortedData);
     } catch (error) {
       console.error(error);
     }
